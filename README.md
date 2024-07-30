@@ -65,3 +65,24 @@ Decreases the brightness of a grayscale image.
 - **Parameters:**
   - `image_path` (str): Path to the input image.
   - `x` (int): Value to decrease the brightness by.
+
+### `gaussian_blur_3x3(image_path)`
+
+Applies a 3x3 Gaussian blur to an image.
+
+- **Parameters:**
+  - `image_path` (str): Path to the input image.
+
+### `average_blur(image_path)`
+
+Applies an average blur to an image using a 3x3 kernel.
+
+- **Parameters:**
+  - `image_path` (str): Path to the input image.
+
+### `gaussian_blur_7x7(image_path)`
+
+Applies a 7x7 Gaussian blur to an image.
+
+- **Parameters:**
+  - `image_path` (str): Path to the input image.
