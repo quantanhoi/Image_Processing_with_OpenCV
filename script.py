@@ -171,12 +171,79 @@ def decrease_brightness(image_path, x):
     
     # Save the decreased brightness image (optional)
     cv2.imwrite('decreased_brightness_image.jpg', decreased_image)
+    
+    
+def gaussian_blur_3x3(image_path):
+    # Read the image
+    image = cv2.imread(image_path)
 
-#show_gray_histogramm('gray_image.jpg')
-#convert_grayscale_range('gray_image.jpg', 100, 150)
-#show_gray_histogramm('limited_grayscale_image.jpg')
-#show_gray_histogramm('image.jpeg')
-#read_rgba_histogram('image.jpeg')
+    # Define a 3x3 Gaussian kernel
+    gaussian_kernel = np.array([[1, 2, 1],
+                                [2, 4, 2],
+                                [1, 2, 1]], dtype=np.float32) / 16
+
+    # Apply Gaussian blur using the kernel
+    blurred_image = cv2.filter2D(image, -1, gaussian_kernel)
+    cv2.imshow('Original Image', image)
+    cv2.imshow('Blurred Image', blurred_image)
+    cv2.waitKey(0)
+    cv2.destroyAllWindows()
+    
+    # Save the decreased brightness image (optional)
+    cv2.imwrite('3x3_blurred_image.jpg', blurred_image)
+
+def average_blur(image_path):
+    # Read the image
+    image = cv2.imread(image_path)
+
+    # Define a 3x3 Gaussian kernel
+    average_kernel = np.array([[1, 1, 1],
+                                [1, 1, 1],
+                                [1, 1, 1]], dtype=np.float32) / 9
+
+    # Apply Gaussian blur using the kernel
+    blurred_image = cv2.filter2D(image, -1, average_kernel)
+    cv2.imshow('Original Image', image)
+    cv2.imshow('Blurred Image', blurred_image)
+    cv2.waitKey(0)
+    cv2.destroyAllWindows()
+    
+    # Save the decreased brightness image (optional)
+    cv2.imwrite('blurred_image.jpg', blurred_image)
+    
+    
+def gaussian_blur_7x7(image_path):
+    # Read the image
+    image = cv2.imread(image_path)
+
+    # Define a 7x7 Gaussian kernel
+    gaussian_kernel = np.array([[1,   6,  15,     20,  15,  6,  1],
+                                [6,  36, 90,      120, 90,  36,  6],
+                                [15,  90, 225,    300, 225, 90,  15],
+                                [20, 120, 300,    400, 300, 120, 20],
+                                [15,  90, 225,    300, 225, 90,  15],
+                                [6,  36, 90,      120, 90,  36,  6],
+                                [1,   6,  15,     20,  15,  16,  1]], dtype=np.float32)
+
+    # Normalize the kernel
+    gaussian_kernel = gaussian_kernel / np.sum(gaussian_kernel)
+
+    # Apply Gaussian blur using the kernel
+    blurred_image = cv2.filter2D(image, -1, gaussian_kernel)
+
+    cv2.imshow('Original Image', image)
+    cv2.imshow('Blurred Image', blurred_image)
+    cv2.waitKey(0)
+    cv2.destroyAllWindows()
+    
+    # Save the blurred image (optional)
+    cv2.imwrite('7x7_blurred_image.jpg', blurred_image)
+
+# show_gray_histogramm('gray_image.jpg')
+# convert_grayscale_range('gray_image.jpg', 100, 150)
+# show_gray_histogramm('limited_grayscale_image.jpg')
+# show_gray_histogramm('image.jpeg')
+# read_rgba_histogram('image.jpeg')
 # invert_gray_image('gray_image.jpg')
 # show_gray_histogramm('gray_image.jpg')
 # show_gray_histogramm('inverted_image.jpg')
@@ -184,3 +251,6 @@ def decrease_brightness(image_path, x):
 # show_gray_histogramm('decreased_brightness_image.jpg')
 # increase_brightness('gray_image.jpg', 50)
 # decrease_brightness('gray_image.jpg', 50)
+# gaussian_blur_3x3('image.jpeg')
+# average_blur('image.jpeg') 
+gaussian_blur_7x7('image.jpeg') 
