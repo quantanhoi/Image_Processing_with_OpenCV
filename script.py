@@ -239,6 +239,8 @@ def gaussian_blur_7x7(image_path):
     # Save the blurred image (optional)
     cv2.imwrite('7x7_blurred_image.jpg', blurred_image)
 
+
+to_gray('1311862.jpeg')
 # show_gray_histogramm('gray_image.jpg')
 # convert_grayscale_range('gray_image.jpg', 100, 150)
 # show_gray_histogramm('limited_grayscale_image.jpg')
@@ -253,4 +255,4 @@ def gaussian_blur_7x7(image_path):
 # decrease_brightness('gray_image.jpg', 50)
 # gaussian_blur_3x3('image.jpeg')
 # average_blur('image.jpeg') 
-gaussian_blur_7x7('image.jpeg') 
+# gaussian_blur_7x7('image.jpeg') 
